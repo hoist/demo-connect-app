@@ -4,12 +4,12 @@
 //var _ = require('lodash');
 
 
-module.exports = function (ev) {
+module.exports = function (ev, done) {
   Hoist.log('in poll xero', ev);
 
   var connector = Hoist.connector('xero');
   return connector.get('/contacts')
     .then(function (result) {
       Hoist.log('got response from xero', result);
-    });
+    }).nodeify(done);
 };
