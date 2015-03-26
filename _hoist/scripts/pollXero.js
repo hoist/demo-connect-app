@@ -8,7 +8,13 @@ module.exports = function (ev, done) {
   Hoist.log('in poll xero');
 
   var connector = Hoist.connector('xero');
-  return connector.get('/manualjournals')
+  Hoist.Context.get()
+    .then(function (context) {
+      Hoist.log(context.application);
+      Hoist.log(connector.settings);
+    }).then(function () {
+      return connector.get('/manualjournals');
+    })
     .then(function (result) {
       Hoist.log('got response from xero', result);
     }).catch(function (err) {
