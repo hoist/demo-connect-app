@@ -14,7 +14,7 @@ module.exports = function (ev, done) {
       return connector.connector;
     })
     .then(function (c) {
-      Hoist.log(c.settings);
+      Hoist.log('connector settings:',c.settings);
     }).then(function () {
       return connector.get('/manualjournals');
     })
