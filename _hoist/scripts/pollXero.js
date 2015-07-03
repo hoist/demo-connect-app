@@ -11,10 +11,11 @@ module.exports = function (ev, done) {
   Hoist.Context.get()
     .then(function (context) {
       Hoist.log(context.application);
+      console.log('new log');
       return connector._connector;
     })
     .then(function (c) {
-      Hoist.log('connector settings:',c.settings);
+      Hoist.log('connector settings:', c.settings);
     }).then(function () {
       return connector.get('/manualjournals');
     })
