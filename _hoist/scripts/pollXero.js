@@ -11,7 +11,8 @@ module.exports = function (ev, done) {
   Hoist.Context.get()
     .then(function (context) {
       Hoist.log(context.application);
-      console.log(connector);
+      return connector._loadConnector();
+    }).then(function () {
       return connector._connector;
     })
     .then(function (c) {
