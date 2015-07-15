@@ -8,6 +8,12 @@
   }, {
     "name": "pingLog",
     "src": "./_hoist/scripts/pingLog.js"
+  }, {
+    "name": "errorTest",
+    "src": "./_hoist/scripts/errorTest.js"
+  }, {
+    "name": "timeoutTest",
+    "src": "./_hoist/scripts/timeoutTest.js"
   }],
 
   "on": {
@@ -19,13 +25,15 @@
     },
     "ping:me": {
       "modules": ["pingLog"]
+    },
+    "raise:error": {
+      "modules": ["errorTest", "timeoutTest"]
     }
   },
   "endpoints": {
     "/poll/xero": {
       "methods": ["get"],
       "event": "poll:xero"
-
     },
     "/payment/success": {
       "methods": ["POST"],
@@ -37,6 +45,10 @@
       "event": "get:invoices",
       "authenticated": true,
       "syncronous": true
+    },
+    "/throw/error": {
+      "methods": ["GET"],
+      "event": "raise:error"
     }
   },
 
