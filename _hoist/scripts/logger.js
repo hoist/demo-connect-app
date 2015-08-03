@@ -1,4 +1,4 @@
 module.exports = function (ev, done) {
-  //Hoist.log('hello');
+  Hoist.log('hello');
   return Hoist.event.raise('logger');
 }
