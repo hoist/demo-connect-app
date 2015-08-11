@@ -4,7 +4,9 @@ module.exports = function () {
       console.log(Hoist.connector);
       var partner = Hoist.connector('xero-partner');
       return partner.init().then(function () {
-        return partner.get('/invoices');
+        return partner.get('/invoices').then(function(result){
+          return Hoist.log(result);
+        });
       });
     })
     .catch(function (err) {
