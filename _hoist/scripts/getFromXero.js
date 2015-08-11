@@ -1,4 +1,5 @@
 'use strict';
 module.exports = function () {
-  return Hoist.connector('xero-partner').get('/invoices');
+  var partner = Hoist.connector('xero-partner');
+  return parner.get('/invoices');
 };
