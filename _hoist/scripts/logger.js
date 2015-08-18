@@ -9,7 +9,7 @@ module.exports = function (ev, done) {
       _.range(0, 100).map(function (index) {
         var startTime = process.hrtime();
         return Hoist.event.raise('an:event', {
-          starttime: starttime
+          startTime: startTime
         }).then(function () {
           var diff = process.hrtime(startTime);
           console.log('raise for ' + index + ' took %d nanoseconds', diff[0] * 1e9 + diff[1]);
