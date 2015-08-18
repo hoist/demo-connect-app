@@ -1,11 +1,12 @@
 var bluebird = require('bluebird');
+var _ = require('lodash');
 module.exports = function (ev, done) {
   Hoist.log('hello');
   var promises = [];
   var globalStart = process.hrtime();
 
   return bluebird.all(
-      Array(100).map(function (index) {
+      _.range(0,100).map(function (index) {
         var startTime = process.hrtime();
         return Hoist.event.raise('an:event').then(function () {
           var diff = process.hrtime(startTime);
