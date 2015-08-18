@@ -6,9 +6,11 @@ module.exports = function (ev, done) {
   var globalStart = process.hrtime();
 
   return bluebird.all(
-      _.range(0,100).map(function (index) {
+      _.range(0, 100).map(function (index) {
         var startTime = process.hrtime();
-        return Hoist.event.raise('an:event').then(function () {
+        return Hoist.event.raise('an:event', {
+          starttime: starttime
+        }).then(function () {
           var diff = process.hrtime(startTime);
           console.log('raise for ' + index + ' took %d nanoseconds', diff[0] * 1e9 + diff[1]);
         }).catch(function (err) {
