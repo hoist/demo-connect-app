@@ -4,7 +4,7 @@ module.exports = function (ev, done) {
   var promises = [];
   var globalStart = process.hrtime();
 
-  return Bluebird.all(
+  return bluebird.all(
       Array(100).map(function (index) {
         var startTime = process.hrtime();
         return Hoist.event.raise('an:event').then(function () {
