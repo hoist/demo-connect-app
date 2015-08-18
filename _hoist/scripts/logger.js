@@ -7,10 +7,14 @@ module.exports = function (ev, done) {
 
   var index = i;
   var startTime = process.hrtime();
-  return Hoist.event.raise('an:event').then(function () {
-    var diff = process.hrtime(startTime);
-    console.log('raise for ' + i + ' took %d nanoseconds', diff[0] * 1e9 + diff[1]);
-
+  return Bluebird.all(
+    Array(100).map(function (index) {
+      return Hoist.event.raise('an:event').then(function () {
+        var diff = process.hrtime(startTime);
+        console.log('raise for ' + index + ' took %d nanoseconds', diff[0] * 1e9 + diff[1]);
+      });
+    })).then(function () {
+    console.log('all done');
   });
 
 
