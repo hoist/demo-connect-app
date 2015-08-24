@@ -17,6 +17,9 @@
   }, {
     "name": "logger",
     "src": "./_hoist/scripts/logger.js"
+  }, {
+    "name": "dataTest",
+    "src": "./_hoist/scripts/dataTest.js"
   }],
 
   "on": {
@@ -37,6 +40,9 @@
     },
     "logger": {
       "modules": ["logger"]
+    },
+    "data": {
+      "modules": ["dataTest"]
     }
   },
   "endpoints": {
@@ -66,6 +72,10 @@
     "/logger": {
       "methods": ["GET"],
       "event": "logger"
+    },
+    "/data": {
+      "methods": ["GET"],
+      "event": "data"
     }
   },
 
