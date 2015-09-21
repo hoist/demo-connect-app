@@ -8,6 +8,7 @@ module.exports = function () {
       });
     })
     .catch(function (err) {
-      Hoist.log(err.message, err.stack);
+
+      Hoist.log(err.message, err.stack, err.statusCode);
     });
 };
